@@ -32,5 +32,7 @@ if __name__ == '__main__':
             except Exception as e:
                 print(e)
             time.sleep(config.get_sensor_refresh_interval())
+    except Exception as e:
+        print(e)
     finally:
         print('Shutting down...')
