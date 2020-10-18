@@ -1,8 +1,8 @@
 import sys
 import time
 
-from src.config.config import Config, DriverLoader
-from src.clients.warehouse_client import WarehouseClient
+from config.config import Config, DriverLoader
+from clients.warehouse_client import WarehouseClient
 
 if __name__ == '__main__':
     try:
@@ -27,7 +27,10 @@ if __name__ == '__main__':
         print('Monitoring sensor \'%s...\'' % sensor.name)
         for i in range(config.get_sensor_measurement_cycle_count()):
             sensor_value = sensor.get_value()
-            warehouse_client.send_sensor_update(sensor_id, sensor_value)
+            try:
+                warehouse_client.send_sensor_update(sensor_id, sensor_value)
+            except Exception as e:
+                print(e)
             time.sleep(config.get_sensor_refresh_interval())
     finally:
         print('Shutting down...')

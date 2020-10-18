@@ -1,5 +1,5 @@
 class WarehouseClient:
-    from src.config.config import Config
+    from config.config import Config
 
     def __init__(self, connection_params: Config):
         import requests
