@@ -22,6 +22,9 @@ class Config:
     def get_sensor_refresh_interval(self) -> int:
         return int(self._config[self._sensor_type]['refresh-interval-seconds'])
 
+    def get_sensor_measurement_cycle_count(self) -> int:
+        return int(self._config[self._sensor_type]['measurement-cycle-count'])
+
     def _parse_config_file(self) -> configparser.ConfigParser:
         config = configparser.ConfigParser()
         config.read(self._config_file_path)

@@ -25,7 +25,7 @@ if __name__ == '__main__':
         sensor_id = warehouse_client.setup_sensor(sensor.name)
 
         print('Monitoring sensor \'%s...\'' % sensor.name)
-        while True:
+        for i in range(config.get_sensor_measurement_cycle_count()):
             sensor_value = sensor.get_value()
             warehouse_client.send_sensor_update(sensor_id, sensor_value)
             time.sleep(config.get_sensor_refresh_interval())
