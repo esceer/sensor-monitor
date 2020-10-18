@@ -19,9 +19,11 @@ venv/bin/python3 monitor.py <*sensor_type*> <*sensor_name*>
 Crontab is used to schedule a full reboot of the application *(every 5 minutes)*
 which initiates the sensors to synchronize with the backend.
 Between these synchronization points, the application sends the current sensor state
-to the backend every 30 seconds.<br/>
+to the backend every 30 seconds.
+<br/>
 The timing properties can be modified in the **bin/sm.ini** file.
 
 ##### Configure
 crontab -u <username> -e
-*/5 * * * * <*install_dir*>/sensor-monitor/bin/monitor_ts2591_sensor.sh <*sensor_name*>
+<br/>
+*/5 * * * * <*install_dir*>/sensor-monitor/bin/monitor_ts2591_sensor.sh <*sensor_name*> > <*log_dir*>/sm.log 2>&1
