@@ -24,7 +24,7 @@ if __name__ == '__main__':
         warehouse_client = WarehouseClient(config)
         sensor_id = warehouse_client.setup_sensor(sensor.name)
 
-        print('Monitoring sensor \'%s...\'' % sensor.name)
+        print(f'Monitoring sensor \'{sensor.name}...\'')
         for i in range(config.get_sensor_measurement_cycle_count()):
             sensor_value = sensor.get_value()
             try:

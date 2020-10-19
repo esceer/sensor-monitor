@@ -18,16 +18,13 @@ class WarehouseClient:
         self._requests.put(self._get_update_state_url(sensor_id, sensor_state))
 
     def _get_fetch_by_name_url(self, sensor_name: str) -> str:
-        return self._get_base_path() + '/name/%s' % sensor_name
+        return self._get_base_path() + f'/name/{sensor_name}'
 
     def _get_setup_sensor_url(self, sensor_name: str) -> str:
-        return self._get_base_path() + '/%s/state/init' % sensor_name
+        return self._get_base_path() + f'/{sensor_name}/state/init'
 
     def _get_update_state_url(self, sensor_id: str, sensor_state: str) -> str:
-        return self._get_base_path() + '/%s/state/%s' % (
-            sensor_id,
-            sensor_state
-        )
+        return self._get_base_path() + f'/{sensor_id}/state/{sensor_state}'
 
     def _get_base_path(self) -> str:
         return 'http://%s:%s/sensors' % (
@@ -45,4 +42,4 @@ class ResponseParser:
         if 'id' in json:
             return json.get('id')
         else:
-            raise ValueError('Sensor name cannot be gathered from response: %s' % json)
+            raise ValueError(f'Sensor name cannot be gathered from response: {json}')
