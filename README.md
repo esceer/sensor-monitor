@@ -24,6 +24,6 @@ to the backend every 30 seconds.
 The timing properties can be modified in the **bin/sm.ini** file.
 
 ##### Configure
-crontab -u <username> -e
+crontab -u <*username*> -e
 <br/>
 */5 * * * * <*install_dir*>/sensor-monitor/bin/monitor_ts2591_sensor.sh <*sensor_name*> > <*log_dir*>/sm.log 2>&1
